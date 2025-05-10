@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AQI Level Predictor</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      margin: 0;
+      padding-top: 40px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Air Quality (PM2.5) Predictor</h1>
+  <form method="POST" action="/predict">
+    <label for="temp">Temperature (°C):</label>
+    <input type="number" step="0.1" name="temp" required>
+
+    <label for="humidity">Humidity (%):</label>
+    <input type="number" step="0.1" name="humidity" required>
+
+    <label for="pm10">PM10 (µg/m³):</label>
+    <input type="number" step="0.1" name="pm10" required>
+
+    <label for="no2">NO2 (µg/m³):</label>
+    <input type="number" step="0.1" name="no2" required>
+
+    <label for="o3">Ozone (O₃) (µg/m³):</label>
+    <input type="number" step="0.1" name="o3" required>
+
+    <label for="co">CO (mg/m³):</label>
+    <input type="number" step="0.1" name="co" required>
+
+    <label for="so2">SO2 (µg/m³):</label>
+    <input type="number" step="0.1" name="so2" required>
+
+    <label for="wind">Wind Speed (m/s):</label>
+    <input type="number" step="0.1" name="wind" required>
+
+    <button type="submit">Predict AQI (PM2.5)</button>
+
+    <div class="result">
+      {{ prediction_text }}
+    </div>
+  </form>
+</body>
+</html>
